@@ -82,7 +82,9 @@ private fun tongueTop(a: Art, x: Float, m: Float, tremor: Float): Float { var y 
   Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
     Canvas(Modifier.fillMaxWidth().height(280.dp)) {
       val t = clock.floatValue; val w = size.width; val h = size.height; val c = closure(a, t)
-      fun X(x: Float) = x * w; fun Y(y: Float) = y * h; fun P(x: Float, y: Float) = Offset(X(x), Y(y))
+      fun X(x: Float): Float = x * w
+      fun Y(y: Float): Float = y * h
+      fun P(x: Float, y: Float): Offset = Offset(X(x), Y(y))
       val jaw = if (a.zone == "open") .1f * c else 0f
       val tremor = if (a.takrir) .35f * (0.5f + 0.5f * sin(2 * PIf * t * 14f)) else 0f
       val nasalAmt = if (a.nasal) 1f else 0f
